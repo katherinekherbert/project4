@@ -146,6 +146,7 @@ function UserProfile({ match, params, history }) {
         }}
       >
 
+
         <section className="form-container brandfont">
           <Form>
             <p className="title">Edit Profile</p>
