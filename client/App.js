@@ -36,6 +36,7 @@ import Search from './components/Search.js'
 import UserProfile from './components/UserProfile.js'
 import Footer from './components/Footer.js'
 import MyPosts from './components/MyPosts.js'
+import LikeButton from './components/LikeButton.js'
 
 const App = () => (
   <BrowserRouter>
