@@ -138,7 +138,7 @@ function NewForm({ history }) {
             {/* <div className="checkbox-container"> */}
             <div className="field">
               <label>Check if you wish to be the teacher*</label>
-              <MyCheckbox name="checkbox">
+              <MyCheckbox type="checkbox" name="is_offer">
                 I'll teach!
               </MyCheckbox>
             </div>

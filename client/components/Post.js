@@ -3,7 +3,7 @@ import axios from 'axios'
 import { isCreator } from '../lib/auth'
 import { getLoggedInUserId } from '../lib/auth'
 import { Link } from 'react-router-dom'
-
+import LikeButton from './LikeButton.js'
 function Post({ match }) {
   const token = localStorage.getItem('token')
   const [content, setComment] = useState('')
@@ -16,6 +16,7 @@ function Post({ match }) {
 
   //const [error, updateError] = useState(false)
 
+  
 
   async function fetchData() {
     await axios.get(`/api/posts/${id}`)
@@ -108,6 +109,7 @@ function Post({ match }) {
             <p className='brandfont pb-3'><span id='olive-green-text'>Description:</span> {post.description}</p>
 
             <p className='brandfont pb-3'><span id='olive-green-text'>Availability:</span> {post.availability}</p>
+            <LikeButton />
             <div className='box px-6 pt-5 pb-3 mt-4 text-is-centered meet-user' id='olive-background'>
               <h4 className='title brandfont' id='gold-text'>Meet {post.user.first_name}</h4>
               <p className='brandfont has-text-white'>{post.user.bio}</p>
