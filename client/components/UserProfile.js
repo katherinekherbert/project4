@@ -140,6 +140,7 @@ function UserProfile({ match, params, history }) {
             }, 400)
           }
           catch (err) {
+            updateError('Could not update user. Please complete all fields, including a unique email address.')
             console.log('aaaaaaa')
             console.log(err)
           }
@@ -225,6 +226,8 @@ function UserProfile({ match, params, history }) {
 
             <button type="submit" className="button is-warning brandfont">Submit</button>
             <button className="button is-danger mt-5" onClick={handleDeleteUser}>Delete my account</button>
+          <br /> 
+          {error && <div className='box has-background-danger has-text-white'>{error}</div>}
           </Form>
         </section>
       </Formik>

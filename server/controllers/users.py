@@ -77,7 +77,7 @@ def update_user(user_id):
 def remove_user(user_id):
     user_to_delete = User.query.get(user_id)
 
-    # ! Adding a permission to make sure you can only delete your own cake!
+  
     # if user_to_delete.user != g.current_user:
     #     return {'errors': 'User can only be deleted by the creator!'}, 402
 

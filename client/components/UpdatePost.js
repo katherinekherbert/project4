@@ -145,7 +145,7 @@ function UpdatePost({ history, match }) {
         onSubmit={async (values, { setSubmitting }) => {
           const token = localStorage.getItem('token')
 
-          const { data } = await axios.put(`/api/posts/${id}`, {
+          try {const { data } = await axios.put(`/api/posts/${id}`, {
             title: values.title,
             level: values.level,
             dialect: values.dialect,
@@ -167,6 +167,11 @@ function UpdatePost({ history, match }) {
             // alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
           }, 400)
+        }  catch (err) {
+          
+          updateError('Unable to update post. Please enter a value for all required fields.')
+          console.log(err)
+        }
         }}
       >
 
@@ -265,7 +270,8 @@ function UpdatePost({ history, match }) {
               type="submit"
               className="button is-warning brandfont"
             >Submit</button>
-
+            <br />
+            {error && <div className='box has-background-danger has-text-white'>{error}</div>}
             <button className="button is-danger mt-5" onClick={handleDeletePost}>Delete Post</button>
             <br />
           </Form>
@@ -274,38 +280,38 @@ function UpdatePost({ history, match }) {
               <h1 className='title pt-5'>How to fill out this form:</h1>
 
               <div className="form-instruction">
-                <ul className='center-text'>Title</ul>
+                <ul className='center-text' id='center-list'>Title</ul>
                 <li>Write a short description of what you are looking for. This will be the first thing potential students/teachers see!</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Checkbox</ul>
+                <ul className='center-text' id='center-list'>Checkbox</ul>
                 <li>If you are offering your services as a teacher, check this box so that you're information can be properly filtered</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Language</ul>
+                <ul className='center-text' id='center-list'>Language</ul>
                 <li>What language you wish to learn/teach</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Level</ul>
+                <ul className='center-text' id='center-list'>Level</ul>
                 <li>If you are offering your services as a teacher, please choose the level you feel most comfortable teaching</li>
                 <li>If you are looking to learn, please choose which level you would like to start at</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Dialect</ul>
+                <ul className='center-text' id='center-list'>Dialect</ul>
                 <li>Have a particular dialect in mind? Include it here</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Availability</ul>
+                <ul className='center-text' id='center-list'>Availability</ul>
                 <li>When do you have time for class? Be as specific as you can!</li>
               </div>
 
               <div className="form-instruction">
-                <ul className='center-text'>Description</ul>
+                <ul className='center-text' id='center-list'>Description</ul>
                 <li>Is there any additional pertinent information you want to add? Include it here!</li>
               </div>
             </div>
