@@ -42,16 +42,20 @@ function About() {
               </div>
 
             </div>
+            <div className="is-centered" >
+              <br />
             <h3 className="has-text-centered">Technologies Used</h3>
-            <ul className="column is-centered">
-              <li>HTML</li>
-              <li>SCSS</li>
-              <li>Python</li>
-              <li>React</li>
-              <li>PostgreSQL</li>
-              <li>Bulma</li>
-              <li>Formik</li>
+            <ul className="column is-centered" id='center-list'>
+              <li className="is-centered">HTML</li>
+              <li className="is-centered">SCSS</li>
+              <li className="is-centered">Python</li>
+              <li className="is-centered">React</li>
+              <li className="is-centered">PostgreSQL</li>
+              <li className="is-centered">Bulma</li>
+              <li className="is-centered">Formik</li>
+              
             </ul>
+            </div>
           </div>
         </div>
       </div>

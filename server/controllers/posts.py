@@ -52,7 +52,7 @@ def create_post():
 
     try:
         post = post_schema.load(post_dictionary)
-        # ! Adding a user to the cake.
+       
         post.user = g.current_user
 
     except ValidationError as e:
@@ -93,7 +93,6 @@ def update_post(post_id):
 def remove_post(post_id):
     post = Post.query.get(post_id)
 
-    # ! Adding a permission to make sure you can only delete your own cake!
     if post.user != g.current_user:
         return {'errors': 'Post can only be deleted by the creator!'}, 402
 

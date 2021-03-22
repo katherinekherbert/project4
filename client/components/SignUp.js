@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import ReactDOM from 'react-dom'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
@@ -49,7 +49,7 @@ const MyTextInput = ({ label, ...props }) => {
 
 
 function SignUp({ history }) {
-
+  const [error, updateError] = useState('')
   return (
     <>
 
@@ -91,7 +91,8 @@ function SignUp({ history }) {
 
         //make async
         onSubmit={async (values, { setSubmitting }) => {
-          const { data } = await axios.post('/api/signup', {
+          try {
+            const { data } = await axios.post('/api/signup', {
 
             username: values.username,
             email: values.email,
@@ -107,6 +108,9 @@ function SignUp({ history }) {
             // alert(JSON.stringify(values, null, 2))
             setSubmitting(false)
           }, 400)
+        } catch (err) {
+          updateError('Could not register user. Please complete all fields, including a unique email address.')
+        }
         }}
       >
 
@@ -175,7 +179,8 @@ function SignUp({ history }) {
             </div>
 
             <button type="submit" className="brandfont is-warning">Submit</button>
-
+            <br />
+            {error && <div className='box has-background-danger has-text-white'>{error}</div>}
           </Form>
         </section>
       </Formik>

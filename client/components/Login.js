@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import ReactDOM from 'react-dom'
 import { Formik, Form, useField } from 'formik'
 import * as Yup from 'yup'
@@ -20,7 +20,7 @@ const MyTextInput = ({ label, ...props }) => {
 
 
 function Login({ history }) {
-
+  const [error, updateError] = useState('')
   return (
     <>
 
@@ -31,7 +31,8 @@ function Login({ history }) {
         }}
 
         onSubmit={async (values, { setSubmitting }) => {
-          const { data } = await axios.post('/api/login', {
+          try {
+            const { data } = await axios.post('/api/login', {
             email: values.email,
             password: values.password
           })
@@ -47,7 +48,10 @@ function Login({ history }) {
             console.log(data.token)
             setSubmitting(false)
           }, 400)
+        } catch (err) {
+          updateError('Could not log in. Invalid email or password.')
         }}
+        }
       >
 
         <div className="form-container brandfont">
@@ -75,7 +79,8 @@ function Login({ history }) {
             </div>
 
             <button type="submit" className="brandfont is-warning">Submit</button>
-
+            <br />
+            {error && <div className='box has-background-danger has-text-white'>{error}</div>}
           </Form>
         </div>
 
