@@ -23,7 +23,7 @@ class LikeButton extends Component {
     return (
       <div>
         <button id='gold-button' onClick={this.incrementMe}>
-          Likes: {this.state.count}
+          {this.state.count} people recommend working with person! 
         </button>
        
       </div>

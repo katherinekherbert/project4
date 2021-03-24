@@ -164,8 +164,9 @@ function Post({ match }) {
                     {loggedIn && <article className="media">
                       <div className="media-content">
                         <div className="field" >
-                          <p className="control">
+                          <p className="control" id="center-list">
                             <textarea
+                            
                               className="textarea"
                               placeholder="make a comment"
                               onChange={event => setComment(event.target.value)}
